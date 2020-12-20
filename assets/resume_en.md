@@ -6,14 +6,14 @@
 Two years of production experience in software development.
 Skills: mobile development, software development.
 
-## SOCIAL PROFILES
+## Social networks
 * [GitHub](https://github.com/grafovdenis)
 * [LinkedIn](https://www.linkedin.com/in/denis-grafov/)
 
-## LANGUAGES
+## Languages
     ★★★★☆ English
 
-## SKILLS
+## Skills
     ★★★★☆ Flutter
     ★★★★☆ Dart
     ★★★★☆ Rest API
@@ -28,7 +28,7 @@ Skills: mobile development, software development.
     ★★★★☆ Gitlab CI/CD + Runner
     ★★★☆☆ GitHub Actions
 
-## WORK EXPERIENCE
+## Work experience
 ### Flutter-developer at It Test
 * September 2020 - Present
 * System for conducting managerial fights "DuelControl".
@@ -51,7 +51,7 @@ Skills: mobile development, software development.
 3. Writing tests in both Dart and Flutter. Unit tests for simple programming tasks, as well as Widget tests for simple widgets.
 
 
-## EDUCATION
+## Education
 ### Peter the Great St. Petersburg Polytechnic University
 #### Computer Science and Software Engineering
 * Bachelor
