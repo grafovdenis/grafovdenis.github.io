@@ -21,11 +21,12 @@ class HomePage extends StatelessWidget {
                   icon: Icon(Icons.nights_stay),
                   onPressed: () =>
                       BlocProvider.of<ThemeCubit>(context).switchTheme(),
-                  color: (Theme.of(context).brightness == Brightness.light)
-                      ? Colors.black
-                      : Colors.white,
                 )
               ],
+              leading: IconButton(
+                icon: Icon(Icons.language),
+                onPressed: () {},
+              ),
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
                 title: Text("Denis Grafov"),

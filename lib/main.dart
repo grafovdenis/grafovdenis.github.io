@@ -22,9 +22,9 @@ class MyApp extends StatelessWidget {
     return BlocBuilder<ThemeCubit, ThemeState>(
       builder: (context, state) {
         return MaterialApp(
-          title: 'Flutter Demo',
+          title: 'Resume',
           theme: ThemeData(
-            primarySwatch: Colors.blue,
+            primarySwatch: Colors.purple,
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
           darkTheme: ThemeData.dark(),
