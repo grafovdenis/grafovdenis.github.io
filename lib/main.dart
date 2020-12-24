@@ -9,8 +9,8 @@ import 'pages/home_page.dart';
 void main() {
   runApp(MultiBlocProvider(
     providers: [
-      BlocProvider(create: (_) => ThemeCubit()),
-      BlocProvider(create: (_) => LocaleCubit()),
+      BlocProvider<ThemeCubit>(create: (_) => ThemeCubit()),
+      BlocProvider<LocaleCubit>(create: (_) => LocaleCubit()),
     ],
     child: MyApp(),
   ));
