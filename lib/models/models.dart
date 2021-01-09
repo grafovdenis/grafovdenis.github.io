@@ -27,6 +27,24 @@ class Link {
   final String url;
 
   const Link({this.title, this.url});
+
+  @override
+  String toString() {
+    return '{"title": $title, "url": $url}';
+  }
+
+  factory Link.fromString(String string) {
+    final titleStart = string.indexOf('[');
+    final titleEnd = string.indexOf(']');
+
+    final urlStart = string.indexOf('(');
+    final urlEnd = string.indexOf(')');
+
+    return Link(
+      title: string.substring(titleStart + 1, titleEnd),
+      url: string.substring(urlStart + 1, urlEnd),
+    );
+  }
 }
 
 class Skill {
@@ -35,6 +53,14 @@ class Skill {
   final int maxValue;
 
   const Skill({this.title, this.value, this.maxValue});
+
+  factory Skill.fromString(String string) {
+    return Skill(
+      title: string.split(" ").sublist(1).join(" "),
+      value: '★'.allMatches(string).length,
+      maxValue: string.split(" ").first.length,
+    );
+  }
 }
 
 class Experience {
