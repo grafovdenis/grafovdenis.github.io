@@ -1,6 +1,21 @@
 part of 'locale_cubit.dart';
 
-@immutable
-abstract class LocaleState {}
+enum AppLocale { en, ru }
 
-class LocaleInitial extends LocaleState {}
+extension ToString on AppLocale {
+  String toShortString() => this.toString().split(".").last;
+}
+
+@immutable
+abstract class LocaleState {
+  final AppLocale locale;
+  const LocaleState({this.locale});
+}
+
+class LocaleInitial extends LocaleState {
+  const LocaleInitial() : super(locale: AppLocale.en);
+}
+
+class ChangedLocale extends LocaleState {
+  const ChangedLocale({AppLocale locale}) : super(locale: locale);
+}
