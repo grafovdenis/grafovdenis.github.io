@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:resume/models/models.dart';
 
@@ -40,12 +42,10 @@ class AssetReader {
       _links.add(Link.fromString(element));
     });
 
-    final languages =
-        strings.sublist(sectionsIndexes[2] + 1, sectionsIndexes[3] - 1)
+    final languages = strings
+        .sublist(sectionsIndexes[2] + 1, sectionsIndexes[3] - 1)
         .map((e) => e.trim())
         .toList();
-
-    print(languages);
 
     final List<Skill> _languages = [];
 
@@ -64,6 +64,41 @@ class AssetReader {
       _skills.add(Skill.fromString(element));
     });
 
+    final experience =
+        strings.sublist(sectionsIndexes[4] + 1, sectionsIndexes[5] - 1);
+    print(experience);
+
+    final placesExp = RegExp(r"^\#{3}[^\#^\n]+");
+    final _places = experience
+        .where((element) => placesExp.hasMatch(element))
+        .map((e) => e.replaceFirst("### ", ""))
+        .toList();
+
+    final intervals = experience
+        .where((element) => RegExp(r"\*.+[\-|\–].+").hasMatch(element))
+        .toList();
+    print(intervals);
+    final subtitles = experience
+        .where((element) => RegExp(r"\*.+").hasMatch(element))
+        .toList()
+          ..removeWhere((element) => intervals.contains(element));
+    print(subtitles);
+
+    final areasStartExp = RegExp(r"####.+");
+    final areasIndex =
+        experience.indexWhere((element) => areasStartExp.hasMatch(element));
+    print(areasIndex);
+    print(experience.sublist(areasIndex + 1));
+
+    final List<Job> jobs = List.generate(_places.length, (index) {
+      return Job(
+        title: _places[index],
+        interval: intervals[index],
+        subtitle: subtitles[index],
+        areasOfResponsibility: experience.sublist(areasIndex + 1),
+      );
+    });
+
     return ResumeModel(
       name: name,
       position: position,
@@ -72,6 +107,7 @@ class AssetReader {
       links: _links,
       languages: _languages,
       skills: _skills,
+      experience: Experience(jobs: jobs),
     );
   }
 }

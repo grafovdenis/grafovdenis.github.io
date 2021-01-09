@@ -5,6 +5,11 @@ import 'package:resume/blocs/locale/locale_cubit.dart';
 import 'package:resume/blocs/theme/theme_cubit.dart';
 import 'package:resume/models/models.dart';
 import 'package:resume/utils/asset_reader.dart';
+import 'package:resume/utils/scaffold_utils.dart';
+import 'package:resume/widgets/experience_widget.dart';
+import 'package:resume/widgets/languages_widget.dart';
+import 'package:resume/widgets/links_widget.dart';
+import 'package:resume/widgets/skills_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
@@ -14,112 +19,89 @@ class HomePage extends StatelessWidget {
     final themeCubit = BlocProvider.of<ThemeCubit>(context);
     final localeCubit = BlocProvider.of<LocaleCubit>(context);
 
-    return Scaffold(
-      body: BlocBuilder<LocaleCubit, LocaleState>(
-        builder: (context, state) {
-          return FutureBuilder<ResumeModel>(
-              future: AssetReader.read(
-                  'assets/resumes/resume_${state.locale.toShortString()}.md'),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  final model = snapshot.data;
-                  return NestedScrollView(
-                    headerSliverBuilder: (context, scrolled) {
-                      return <Widget>[
-                        SliverAppBar(
-                          elevation: 0,
-                          expandedHeight: 300,
-                          floating: false,
-                          pinned: true,
-                          actions: [
-                            IconButton(
-                              icon: Icon(Icons.nights_stay),
-                              onPressed: () => themeCubit.switchTheme(),
-                            )
-                          ],
-                          leading: IconButton(
+    return BlocBuilder<LocaleCubit, LocaleState>(
+      builder: (context, state) {
+        return FutureBuilder<ResumeModel>(
+          future: AssetReader.read(
+              'assets/resumes/resume_${state.locale.toShortString()}.md'),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              final model = snapshot.data;
+              return Scaffold(
+                drawer: SkillsWidget(model: model.skills),
+                body: NestedScrollView(
+                  headerSliverBuilder: (context, scrolled) {
+                    return <Widget>[
+                      SliverAppBar(
+                        elevation: 0,
+                        expandedHeight: 300,
+                        floating: false,
+                        pinned: true,
+                        actions: [
+                          IconButton(
                             icon: Icon(Icons.language),
                             onPressed: () => localeCubit.switchLocale(),
                           ),
-                          flexibleSpace: FlexibleSpaceBar(
-                            centerTitle: true,
-                            title: Text(model.name),
-                            background: Image.asset(
-                              'assets/images/profile.jpg',
-                              fit: BoxFit.fitWidth,
-                            ),
-                          ),
-                        )
-                      ];
-                    },
-                    body: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          Card(
-                            child: ListTile(
-                              title: Text(model.position),
-                            ),
-                          ),
-                          Card(
-                            child: ListTile(
-                              title: Text(model.phoneNumber),
-                            ),
-                          ),
-                          Card(
-                            child: ListTile(
-                              title: Text(model.description),
-                            ),
-                          ),
-                          ...List<Widget>.generate(model.links.length, (index) {
-                            final el = model.links[index];
-                            IconData icon;
-                            switch (el.title.toLowerCase()) {
-                              case "github":
-                                icon = FontAwesomeIcons.github;
-                                break;
-                              case "linkedin":
-                                icon = FontAwesomeIcons.linkedin;
-                                break;
-                              default:
-                                icon = FontAwesomeIcons.link;
-                            }
-                            return Card(
-                              child: ListTile(
-                                title: Text(el.url),
-                                leading: FaIcon(icon),
-                              ),
-                            );
-                          }),
-                          ...List<Widget>.generate(
-                            model.languages.length,
-                            (index) => Card(
-                              child: ListTile(
-                                title: Text(model.languages[index].title),
-                                subtitle: Text(
-                                    "${model.languages[index].value} / ${model.languages[index].maxValue}"),
-                              ),
-                            ),
-                          ),
-                          ...List<Widget>.generate(
-                            model.skills.length,
-                            (index) => Card(
-                              child: ListTile(
-                                title: Text(model.skills[index].title),
-                                subtitle: Text(
-                                    "${model.skills[index].value} / ${model.skills[index].maxValue}"),
-                              ),
-                            ),
+                          IconButton(
+                            icon: Icon(Icons.nights_stay),
+                            onPressed: () => themeCubit.switchTheme(),
                           ),
                         ],
-                      ),
+                        flexibleSpace: FlexibleSpaceBar(
+                          centerTitle: true,
+                          titlePadding: const EdgeInsets.all(8),
+                          title: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(model.name),
+                              Text(
+                                model.position,
+                                style: TextStyle(fontSize: 14),
+                              ),
+                            ],
+                          ),
+                          background: Padding(
+                            padding: const EdgeInsets.all(32),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(16),
+                              child: Image.asset(
+                                'assets/images/profile.jpg',
+                                fit: BoxFit.fitWidth,
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    ];
+                  },
+                  body: SingleChildScrollView(
+                    padding: const EdgeInsets.all(8),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            model.description,
+                            style: TextStyle(fontSize: 20),
+                          ),
+                        ),
+                        LinksWidget(model: model.links),
+                        LanguagesWidget(model: model.languages),
+                        ExperienceWidget(model: model.experience),
+                      ],
                     ),
-                  );
-                } else {
-                  return Center(child: CircularProgressIndicator());
-                }
-              });
-        },
-      ),
+                  ),
+                ),
+              ).asResponsive();
+            } else {
+              return Scaffold(
+                body: Center(child: CircularProgressIndicator()),
+              );
+            }
+          },
+        );
+      },
     );
   }
 }

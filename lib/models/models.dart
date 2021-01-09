@@ -72,16 +72,14 @@ class Experience {
 class Job {
   final String title;
   final String location;
-  final DateTime start;
-  final DateTime end;
+  final String interval;
   final String subtitle;
   final List<String> areasOfResponsibility;
 
   const Job({
     this.title,
     this.location,
-    this.start,
-    this.end,
+    this.interval,
     this.subtitle,
     this.areasOfResponsibility,
   });
