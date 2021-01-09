@@ -3,6 +3,7 @@
 
 [+79313813371](tel:+79313813371)
 
+## Summary
 Two years of production experience in software development.
 Skills: mobile development, software development.
 
@@ -11,6 +12,7 @@ Skills: mobile development, software development.
 * [LinkedIn](https://www.linkedin.com/in/denis-grafov/)
 
 ## Languages
+    ★★★★★ Russian
     ★★★★☆ English
 
 ## Skills
