@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'blocs/theme/theme_cubit.dart';
 import 'blocs/locale/locale_cubit.dart';
-import 'utils/asset_reader.dart';
 import 'pages/home_page.dart';
 
 void main() {
@@ -23,6 +22,7 @@ class MyApp extends StatelessWidget {
       builder: (context, state) {
         return MaterialApp(
           title: 'Resume',
+          debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primarySwatch: Colors.purple,
             visualDensity: VisualDensity.adaptivePlatformDensity,
