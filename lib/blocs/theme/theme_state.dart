@@ -9,7 +9,7 @@ abstract class ThemeState {
 }
 
 class ThemeInitial extends ThemeState {
-  const ThemeInitial() : super(theme: AppTheme.light);
+  const ThemeInitial({AppTheme theme}) : super(theme: theme);
 }
 
 class ChangedTheme extends ThemeState {

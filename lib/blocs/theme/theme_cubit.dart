@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 part 'theme_state.dart';
 
 class ThemeCubit extends Cubit<ThemeState> {
-  ThemeCubit() : super(ThemeInitial());
+  ThemeCubit(AppTheme theme) : super(ThemeInitial(theme: theme));
 
   void switchTheme() {
     if (state.theme == AppTheme.dark) {
