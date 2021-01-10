@@ -9,23 +9,41 @@ class ExperienceWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
-        children: List<Widget>.generate(
-          model.jobs.length,
-          (index) => Card(
-            child: ListTile(
-              title: Text(model.jobs[index].title),
-              subtitle: Column(
+        children: [
+          Text(
+            model.title ?? "Experince",
+            style: Theme.of(context).textTheme.headline4,
+          ),
+          ...List<Widget>.generate(
+            model.jobs.length,
+            (index) => Card(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(model.jobs[index].subtitle),
-                  Text(model.jobs[index].interval),
+                  ListTile(
+                    title: Text(model.jobs[index].title),
+                    subtitle: Text(
+                      model.jobs[index].subtitle,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Text(
+                      model.jobs[index].interval,
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
                   ...model.jobs[index].areasOfResponsibility
-                      .map((e) => Text(e))
+                      .map((e) => Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: Text(e, textAlign: TextAlign.start),
+                          ))
                       .toList(),
                 ],
               ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }

@@ -43,6 +43,7 @@ class HomePage extends StatelessWidget {
                             onPressed: () => localeCubit.switchLocale(),
                           ),
                           IconButton(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
                             icon: Icon(Icons.nights_stay),
                             onPressed: () => themeCubit.switchTheme(),
                           ),
@@ -86,7 +87,10 @@ class HomePage extends StatelessWidget {
                             style: TextStyle(fontSize: 20),
                           ),
                         ),
-                        LinksWidget(model: model.links),
+                        LinksWidget(
+                          model: model.links,
+                          telephone: model.phoneNumber,
+                        ),
                         LanguagesWidget(model: model.languages),
                         ExperienceWidget(model: model.experience),
                       ],
