@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:resume/models/models.dart';
 
@@ -20,7 +18,7 @@ class AssetReader {
         .split('tel:')[1]
         .replaceAll(")", "");
 
-    final sectionExp = RegExp(r"^\#{2}[a-zA-Zа-яА-Я\s]+$");
+    final sectionExp = RegExp(r"^\#{2}[^#].+$");
 
     final sections = strings.where((element) => sectionExp.hasMatch(element));
 
@@ -65,8 +63,7 @@ class AssetReader {
     });
 
     final experience =
-        strings.sublist(sectionsIndexes[4] + 1, sectionsIndexes[5] - 1);
-    print(experience);
+        strings.sublist(sectionsIndexes[4], sectionsIndexes[5] - 1);
 
     final placesExp = RegExp(r"^\#{3}[^\#^\n]+");
     final _places = experience
@@ -76,26 +73,32 @@ class AssetReader {
 
     final intervals = experience
         .where((element) => RegExp(r"\*.+[\-|\–].+").hasMatch(element))
+        .map((e) => e.replaceFirst("* ", ""))
         .toList();
-    print(intervals);
+
     final subtitles = experience
         .where((element) => RegExp(r"\*.+").hasMatch(element))
+        .map((e) => e.replaceFirst("* ", ""))
         .toList()
           ..removeWhere((element) => intervals.contains(element));
-    print(subtitles);
 
     final areasStartExp = RegExp(r"####.+");
-    final areasIndex =
-        experience.indexWhere((element) => areasStartExp.hasMatch(element));
-    print(areasIndex);
-    print(experience.sublist(areasIndex + 1));
+    final areasStartsIndexes = <int>[];
+
+    experience.asMap().forEach((index, element) {
+      if (areasStartExp.hasMatch(element)) {
+        areasStartsIndexes.add(index + 1);
+      }
+    });
+
+    print(experience.sublist(areasStartsIndexes[0]));
 
     final List<Job> jobs = List.generate(_places.length, (index) {
       return Job(
         title: _places[index],
         interval: intervals[index],
         subtitle: subtitles[index],
-        areasOfResponsibility: experience.sublist(areasIndex + 1),
+        areasOfResponsibility: experience.sublist(areasStartsIndexes[index]),
       );
     });
 
@@ -107,7 +110,10 @@ class AssetReader {
       links: _links,
       languages: _languages,
       skills: _skills,
-      experience: Experience(jobs: jobs),
+      experience: Experience(
+        jobs: jobs,
+        title: experience[0].replaceFirst("## ", ""),
+      ),
     );
   }
 }
