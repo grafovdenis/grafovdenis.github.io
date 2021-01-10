@@ -22,6 +22,13 @@ class ResumeModel {
   });
 }
 
+abstract class Section<T> {
+  final String title;
+  final T data;
+
+  const Section({this.title, this.data});
+}
+
 class Link {
   final String title;
   final String url;
@@ -49,24 +56,26 @@ class Link {
 
 class Skill {
   final String title;
+  final String strValue;
   final int value;
   final int maxValue;
 
-  const Skill({this.title, this.value, this.maxValue});
+  const Skill({this.title, this.strValue, this.value, this.maxValue});
 
   factory Skill.fromString(String string) {
     return Skill(
       title: string.split(" ").sublist(1).join(" "),
+      strValue: string.split(" ").first,
       value: '★'.allMatches(string).length,
       maxValue: string.split(" ").first.length,
     );
   }
 }
 
-class Experience {
+class Experience extends Section {
   final List<Job> jobs;
 
-  const Experience({this.jobs});
+  const Experience({String title, this.jobs}) : super(title: title);
 }
 
 class Job {
@@ -85,7 +94,7 @@ class Job {
   });
 }
 
-class Education {
+class Education extends Section {
   final String place;
   final String area;
   final DateTime start;
@@ -94,11 +103,12 @@ class Education {
   final List<String> courses;
 
   const Education({
+    String title,
     this.place,
     this.area,
     this.start,
     this.end,
     this.programm,
     this.courses,
-  });
+  }) : super(title: title);
 }
