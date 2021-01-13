@@ -4,15 +4,11 @@ import 'package:resume/models/models.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LinksWidget extends StatelessWidget {
-  final String telephone;
-  final String location;
-  final List<Link> model;
+  final Links model;
 
   const LinksWidget({
     Key key,
     this.model,
-    this.telephone,
-    this.location,
   }) : super(key: key);
 
   @override
@@ -20,20 +16,14 @@ class LinksWidget extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          if (telephone != null && telephone.isNotEmpty)
-            Card(
-              child: ListTile(
-                title: Text(telephone),
-                leading: FaIcon(FontAwesomeIcons.phone),
-                onTap: () {
-                  launch("tel:$telephone");
-                },
-              ),
-            ),
+          Text(
+            model.title ?? "Links",
+            style: Theme.of(context).textTheme.headline4,
+          ),
           ...List<Widget>.generate(
-            model.length,
+            model.data.length,
             (index) {
-              final el = model[index];
+              final el = model.data[index];
               IconData icon;
               switch (el.title.toLowerCase()) {
                 case "github":

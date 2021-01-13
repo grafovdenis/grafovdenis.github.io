@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:resume/models/models.dart';
 
-class ExperienceWidget extends StatelessWidget {
-  final Experience model;
-  const ExperienceWidget({Key key, this.model}) : super(key: key);
+class EducationWidget extends StatelessWidget {
+  final Education model;
+  const EducationWidget({Key key, this.model}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,35 +11,43 @@ class ExperienceWidget extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            model.title ?? "Experince",
+            model.title ?? "Education",
             style: Theme.of(context).textTheme.headline4,
           ),
           ...List<Widget>.generate(
-            model.jobs.length,
+            model.data.length,
             (index) => Card(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ListTile(
-                    title: Text(model.jobs[index].title),
+                    title: Text(model.data[index].place),
                     subtitle: Text(
-                      model.jobs[index].subtitle,
+                      "${model.data[index].degree}, ${model.data[index].area}",
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(16),
-                    child: Row(
-                      children: [
-                        FaIcon(FontAwesomeIcons.businessTime),
-                        SizedBox(width: 16),
-                        Text(
-                          model.jobs[index].interval,
-                          textAlign: TextAlign.start,
-                        ),
-                      ],
+                    child: Text(
+                      model.data[index].programm,
+                      textAlign: TextAlign.start,
                     ),
                   ),
-                  ...model.jobs[index].description
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Text(
+                      model.data[index].area,
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Text(
+                      model.data[index].period,
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                  ...model.data[index].courses
                       .map((e) => Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 16, vertical: 8),

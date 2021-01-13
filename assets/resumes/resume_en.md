@@ -56,7 +56,6 @@ Skills: mobile development, software development.
 2. Participated in projects related to Bluetooth Low Energy: an application for visualizing data from a BLE device and transmitting control commands to an external device via Bluetooth SPP, and an application for controlling a small-sized model of an unmanned vehicle via BLE.
 3. Writing tests in both Dart and Flutter. Unit tests for simple programming tasks, as well as Widget tests for simple widgets.
 
-
 ## Education
 ### Peter the Great St. Petersburg Polytechnic University
 #### Computer Science and Software Engineering

@@ -5,7 +5,6 @@ import 'package:resume/utils/asset_reader.dart';
 class ResumeRepository {
   static Future<ResumeModel> getResume(AppLocale locale) async {
     final raw = await AssetReader.read(locale);
-    final file = raw.file;
     final strings = raw.strings;
 
     final name = strings
@@ -55,7 +54,10 @@ class ResumeRepository {
       if (element.contains(telephoneRegExp)) {
         _telephone = telephoneRegExp.firstMatch(element).group(0);
       } else if (element.contains(emailRegExp)) {
-        _email = emailRegExp.firstMatch(element).group(0);
+        _email = emailRegExp
+            .firstMatch(element)
+            .group(0)
+            .replaceFirst("mailto:", "");
       } else {
         _location = element;
       }
@@ -145,10 +147,10 @@ class ResumeRepository {
     );
 
     final educationItems = _educationItems.entries.map((_eduItem) {
-      final area = _eduItem.value.first;
-      final degree = _eduItem.value[1];
-      final period = _eduItem.value[2];
-      final program = _eduItem.value[3];
+      final area = _eduItem.value.first.replaceFirst("#### ", "");
+      final degree = _eduItem.value[1].replaceFirst("* ", "");
+      final period = _eduItem.value[2].replaceFirst("* ", "");
+      final program = _eduItem.value[3].replaceFirst("* ", "");
 
       int coursesIndex;
       _eduItem.value.asMap().forEach((i, element) {

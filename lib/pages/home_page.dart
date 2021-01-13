@@ -7,6 +7,8 @@ import 'package:resume/models/models.dart';
 import 'package:resume/repository/resume_repository.dart';
 import 'package:resume/utils/asset_reader.dart';
 import 'package:resume/utils/scaffold_utils.dart';
+import 'package:resume/widgets/contact_info_widget.dart';
+import 'package:resume/widgets/education_widget.dart';
 import 'package:resume/widgets/experience_widget.dart';
 import 'package:resume/widgets/languages_widget.dart';
 import 'package:resume/widgets/links_widget.dart';
@@ -83,6 +85,7 @@ class HomePage extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     child: Column(
                       children: [
+                        ContactInfoWidget(model: model.contactInfo),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
@@ -90,12 +93,10 @@ class HomePage extends StatelessWidget {
                             style: TextStyle(fontSize: 20),
                           ),
                         ),
-                        LinksWidget(
-                          model: model.links.data,
-                          telephone: model.contactInfo.phoneNumber,
-                        ),
-                        LanguagesWidget(model: model.languages.data),
+                        LinksWidget(model: model.links),
+                        LanguagesWidget(model: model.languages),
                         ExperienceWidget(model: model.experience),
+                        EducationWidget(model: model.education),
                       ],
                     ),
                   ),

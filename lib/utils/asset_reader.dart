@@ -2,10 +2,9 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:resume/blocs/locale/locale_cubit.dart';
 
 class RawResume {
-  final String file;
   final List<String> strings;
 
-  const RawResume({this.file, this.strings});
+  const RawResume({this.strings});
 }
 
 class AssetReader {
@@ -14,6 +13,6 @@ class AssetReader {
         .loadString('assets/resumes/resume_${locale.toShortString()}.md');
     final strings = file.split('\n');
 
-    return RawResume(file: file, strings: strings);
+    return RawResume(strings: strings);
   }
 }
