@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:resume/models/models.dart';
 
 class SkillsWidget extends StatelessWidget {
+  final String title;
   final List<Skill> model;
-  const SkillsWidget({Key key, this.model}) : super(key: key);
+  const SkillsWidget({Key key, this.title, this.model}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class SkillsWidget extends StatelessWidget {
             DrawerHeader(
               child: Center(
                 child: Text(
-                  "Skills",
+                  title ?? "Skills",
                   style: Theme.of(context).textTheme.headline3,
                 ),
               ),

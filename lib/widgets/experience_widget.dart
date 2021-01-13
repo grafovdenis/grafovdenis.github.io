@@ -33,7 +33,7 @@ class ExperienceWidget extends StatelessWidget {
                       textAlign: TextAlign.start,
                     ),
                   ),
-                  ...model.jobs[index].areasOfResponsibility
+                  ...model.jobs[index].description
                       .map((e) => Padding(
                             padding: const EdgeInsets.all(16),
                             child: Text(e, textAlign: TextAlign.start),

@@ -38,7 +38,7 @@ Skills: mobile development, software development.
 * September 2020 - Present
 * System for conducting managerial fights "DuelControl".
 
-#### Areas of responsibility:
+#### Description:
 1. Creating a user interface
 2. Communication with Rest API, communication via WebSocket
 3. Building architecture
@@ -51,7 +51,7 @@ Skills: mobile development, software development.
 * April 2019 - July 2020
 * Laboratory "Industrial systems of streaming data processing".
 
-#### Areas of responsibility:
+#### Description:
 1. In 2019, I participated in a commercial project for writing a mobile application in Flutter (a mobile application for investors).
 2. Participated in projects related to Bluetooth Low Energy: an application for visualizing data from a BLE device and transmitting control commands to an external device via Bluetooth SPP, and an application for controlling a small-sized model of an unmanned vehicle via BLE.
 3. Writing tests in both Dart and Flutter. Unit tests for simple programming tasks, as well as Widget tests for simple widgets.

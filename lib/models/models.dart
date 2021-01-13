@@ -1,19 +1,23 @@
+import 'dart:developer';
+
+import 'package:flutter/foundation.dart';
+
 class ResumeModel {
   final String name;
   final String position;
-  final String phoneNumber;
-  final String description;
-  final List<Link> links;
-  final List<Skill> languages;
-  final List<Skill> skills;
+  final ContactInfo contactInfo;
+  final String summary;
+  final Links links;
+  final Languages languages;
+  final Skills skills;
   final Experience experience;
   final Education education;
 
   const ResumeModel({
     this.name,
     this.position,
-    this.phoneNumber,
-    this.description,
+    this.contactInfo,
+    this.summary,
     this.links,
     this.languages,
     this.skills,
@@ -22,11 +26,71 @@ class ResumeModel {
   });
 }
 
-abstract class Section<T> {
+abstract class Section {
   final String title;
-  final T data;
 
-  const Section({this.title, this.data});
+  const Section({this.title});
+}
+
+class ContactInfo extends Section {
+  final String location;
+  final String phoneNumber;
+  final String email;
+
+  const ContactInfo({
+    String title,
+    this.location,
+    this.phoneNumber,
+    this.email,
+  }) : super(title: title);
+}
+
+class Links extends Section {
+  final List<Link> data;
+
+  const Links({String title, this.data}) : super(title: title);
+}
+
+class Languages extends Section {
+  final List<Skill> data;
+
+  const Languages({String title, this.data}) : super(title: title);
+}
+
+class Skills extends Section {
+  final List<Skill> data;
+
+  const Skills({String title, this.data}) : super(title: title);
+}
+
+class Experience extends Section {
+  final List<Job> jobs;
+
+  const Experience({String title, this.jobs}) : super(title: title);
+}
+
+class Education extends Section {
+  final List<EducationItem> data;
+
+  const Education({String title, this.data}) : super(title: title);
+}
+
+class EducationItem {
+  final String place;
+  final String area;
+  final String period;
+  final String degree;
+  final String programm;
+  final List<String> courses;
+
+  const EducationItem({
+    @required this.place,
+    @required this.area,
+    @required this.period,
+    @required this.degree,
+    @required this.programm,
+    @required this.courses,
+  });
 }
 
 class Link {
@@ -70,12 +134,16 @@ class Skill {
       maxValue: string.split(" ").first.length,
     );
   }
-}
 
-class Experience extends Section {
-  final List<Job> jobs;
-
-  const Experience({String title, this.jobs}) : super(title: title);
+  @override
+  String toString() {
+    return {
+      "title": title,
+      "strValue": strValue,
+      "value": value,
+      "maxValue": maxValue,
+    }.toString();
+  }
 }
 
 class Job {
@@ -83,32 +151,13 @@ class Job {
   final String location;
   final String interval;
   final String subtitle;
-  final List<String> areasOfResponsibility;
+  final List<String> description;
 
   const Job({
     this.title,
     this.location,
     this.interval,
     this.subtitle,
-    this.areasOfResponsibility,
+    this.description,
   });
-}
-
-class Education extends Section {
-  final String place;
-  final String area;
-  final DateTime start;
-  final DateTime end;
-  final String programm;
-  final List<String> courses;
-
-  const Education({
-    String title,
-    this.place,
-    this.area,
-    this.start,
-    this.end,
-    this.programm,
-    this.courses,
-  }) : super(title: title);
 }
