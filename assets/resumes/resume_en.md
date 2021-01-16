@@ -34,7 +34,7 @@ Skills: mobile development, software development.
     ★★★☆☆ GitHub Actions
 
 ## Work experience
-### Flutter-developer at IT Test
+### Flutter developer at IT Test
 * September 2020 - Present
 * System for conducting managerial fights "DuelControl".
 
@@ -48,7 +48,7 @@ Skills: mobile development, software development.
 7. TestFlight application publishing
 8. Firebase Dynamic Links integration
 
-### Flutter-developer at Peter the Great St. Petersburg Polytechnic University
+### Flutter developer at Peter the Great St. Petersburg Polytechnic University
 * April 2019 - July 2020
 * Laboratory "Industrial systems of streaming data processing".
 
