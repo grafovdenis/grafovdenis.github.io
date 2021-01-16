@@ -33,12 +33,14 @@ class HomePage extends StatelessWidget {
                 drawer: Drawer(
                   child: Padding(
                     padding: const EdgeInsets.all(16),
-                    child: Column(
-                      children: [
-                        SizedBox(height: AppBar().preferredSize.height),
-                        ContactInfoWidget(model: model.contactInfo),
-                        LinksWidget(model: model.links),
-                      ],
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          SizedBox(height: AppBar().preferredSize.height),
+                          ContactInfoWidget(model: model.contactInfo),
+                          LinksWidget(model: model.links),
+                        ],
+                      ),
                     ),
                   ),
                 ),
