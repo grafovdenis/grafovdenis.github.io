@@ -2,13 +2,13 @@
 ### Flutter developer
 
 ## Contact info
-Saint Petersburg, Russia
-[+79313813371](tel:+79313813371)
-[grafov.denis@gmail.com](mailto:grafov.denis@gmail.com)
+Saint Petersburg, Russia  
+[+79313813371](tel:+79313813371)  
+[grafov.denis@gmail.com](mailto:grafov.denis@gmail.com)  
 
 ## Summary
-Two years of production experience in software development.
-Skills: mobile development, software development.
+Two years of production experience in software development.  
+Skills: mobile development, software development.  
 
 ## Social networks
 * [GitHub](https://github.com/grafovdenis)
