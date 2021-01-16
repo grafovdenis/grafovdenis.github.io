@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:resume/models/models.dart';
 
 import 'section_title_text.dart';
@@ -16,42 +15,62 @@ class ExperienceWidget extends StatelessWidget {
           SectionTitleText(model.title ?? "Experince"),
           ...List<Widget>.generate(
             model.jobs.length,
-            (index) => Card(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ListTile(
-                    title: Text(
-                      model.jobs[index].title,
-                      style: TextStyle(fontWeight: FontWeight.bold),
+            (index) => Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Card(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ListTile(
+                      title: Text(
+                        model.jobs[index].title,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Text(
+                        model.jobs[index].subtitle,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ),
-                    subtitle: Text(
-                      model.jobs[index].subtitle,
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16) +
+                          const EdgeInsets.only(bottom: 8),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.schedule,
+                            size: 16,
+                            color: Theme.of(context)
+                                .textTheme
+                                .bodyText1
+                                .color
+                                .withOpacity(0.7),
+                          ),
+                          SizedBox(width: 8),
+                          Text(
+                            model.jobs[index].interval,
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              color: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  .color
+                                  .withOpacity(0.7),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Row(
-                      children: [
-                        FaIcon(FontAwesomeIcons.businessTime),
-                        SizedBox(width: 16),
-                        Text(
-                          model.jobs[index].interval,
-                          textAlign: TextAlign.start,
-                        ),
-                      ],
-                    ),
-                  ),
-                  ...model.jobs[index].description
-                      .map((e) => Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 8),
-                            child: Text(e, textAlign: TextAlign.start),
-                          ))
-                      .toList(),
-                  SizedBox(height: 8),
-                ],
+                    ...model.jobs[index].description
+                        .map((e) => Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 32, vertical: 8),
+                              child: Text(e, textAlign: TextAlign.start),
+                            ))
+                        .toList(),
+                    SizedBox(height: 8),
+                  ],
+                ),
               ),
             ),
           ),

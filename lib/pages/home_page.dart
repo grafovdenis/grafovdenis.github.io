@@ -48,9 +48,23 @@ class HomePage extends StatelessWidget {
                         SliverAppBar(
                           elevation: 0,
                           expandedHeight:
-                              MediaQuery.of(context).size.width / 2.5,
+                              (MediaQuery.of(context).size.width / 2.5 <= 250)
+                                  ? MediaQuery.of(context).size.width / 2.5
+                                  : 250,
                           floating: false,
                           pinned: true,
+                          // leading: Builder(
+                          //   builder: (BuildContext context) {
+                          //     return IconButton(
+                          //       icon: const Icon(FontAwesomeIcons.addressCard),
+                          //       onPressed: () {
+                          //         Scaffold.of(context).openDrawer();
+                          //       },
+                          //       tooltip: MaterialLocalizations.of(context)
+                          //           .openAppDrawerTooltip,
+                          //     );
+                          //   },
+                          // ),
                           actions: [
                             IconButton(
                               icon: Icon(Icons.language),
@@ -83,14 +97,15 @@ class HomePage extends StatelessWidget {
                                 : Container(),
                             background: Center(
                               child: Padding(
-                                padding: const EdgeInsets.all(20),
+                                padding: const EdgeInsets.all(8) +
+                                    const EdgeInsets.only(top: 20),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Flexible(
                                       flex: 1,
                                       child: Container(
-                                        margin: const EdgeInsets.all(16),
+                                        margin: const EdgeInsets.all(8),
                                         child: AspectRatio(
                                           aspectRatio: 1 / 1,
                                           child: ClipRRect(
@@ -106,49 +121,56 @@ class HomePage extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 1,
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            model.name,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headline5
-                                                .copyWith(color: Colors.white),
-                                          ),
-                                          SizedBox(height: 8),
-                                          Text(
-                                            model.position,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headline6
-                                                .copyWith(color: Colors.white),
-                                          ),
-                                          SizedBox(height: 8),
-                                          Row(
-                                            children: [
-                                              FaIcon(
-                                                FontAwesomeIcons.mapMarkerAlt,
-                                                color: Colors.white
-                                                    .withOpacity(0.75),
-                                              ),
-                                              SizedBox(width: 8),
-                                              Text(
-                                                model.contactInfo.location,
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyText1
-                                                    .copyWith(
-                                                        color: Colors.white
-                                                            .withOpacity(0.75)),
-                                              )
-                                            ],
-                                          ),
-                                        ],
+                                      child: Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 8.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              model.name,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .headline5
+                                                  .copyWith(
+                                                      color: Colors.white),
+                                            ),
+                                            SizedBox(height: 8),
+                                            Text(
+                                              model.position,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .headline6
+                                                  .copyWith(
+                                                      color: Colors.white),
+                                            ),
+                                            SizedBox(height: 8),
+                                            Row(
+                                              children: [
+                                                FaIcon(
+                                                  FontAwesomeIcons.mapMarkerAlt,
+                                                  color: Colors.white
+                                                      .withOpacity(0.75),
+                                                ),
+                                                SizedBox(width: 8),
+                                                Text(
+                                                  model.contactInfo.location,
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyText1
+                                                      .copyWith(
+                                                          color: Colors.white
+                                                              .withOpacity(
+                                                                  0.75)),
+                                                )
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     )
                                   ],

@@ -13,7 +13,7 @@ abstract class LocaleState {
 }
 
 class LocaleInitial extends LocaleState {
-  const LocaleInitial() : super(locale: AppLocale.en);
+  const LocaleInitial() : super(locale: AppLocale.ru);
 }
 
 class ChangedLocale extends LocaleState {

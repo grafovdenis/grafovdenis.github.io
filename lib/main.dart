@@ -33,7 +33,6 @@ class MyApp extends StatelessWidget {
           title: 'Resume',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            primarySwatch: Colors.purple,
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
           darkTheme: ThemeData.dark(),

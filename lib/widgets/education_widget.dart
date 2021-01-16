@@ -30,30 +30,57 @@ class EducationWidget extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Text(
-                      model.data[index].programm,
-                      textAlign: TextAlign.start,
+                    padding: const EdgeInsets.symmetric(horizontal: 16) +
+                        const EdgeInsets.only(bottom: 8),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.schedule,
+                          size: 16,
+                          color: Theme.of(context)
+                              .textTheme
+                              .bodyText1
+                              .color
+                              .withOpacity(0.7),
+                        ),
+                        SizedBox(width: 8),
+                        Text(
+                          model.data[index].period,
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            color: Theme.of(context)
+                                .textTheme
+                                .bodyText1
+                                .color
+                                .withOpacity(0.7),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.symmetric(horizontal: 16) +
+                        const EdgeInsets.only(bottom: 8),
                     child: Text(
                       model.data[index].area,
                       textAlign: TextAlign.start,
+                      style: TextStyle(fontStyle: FontStyle.italic),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.symmetric(horizontal: 16) +
+                        const EdgeInsets.only(bottom: 16),
                     child: Text(
-                      model.data[index].period,
+                      model.data[index].programm,
                       textAlign: TextAlign.start,
+                      style: TextStyle(fontStyle: FontStyle.italic),
                     ),
                   ),
                   ...model.data[index].courses
                       .map((e) => Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 8),
+                                horizontal: 32, vertical: 8),
                             child: Text(e, textAlign: TextAlign.start),
                           ))
                       .toList(),
