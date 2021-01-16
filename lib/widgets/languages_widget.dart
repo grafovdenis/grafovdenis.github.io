@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:resume/models/models.dart';
 
+import 'section_title_text.dart';
+
 class LanguagesWidget extends StatelessWidget {
   final Languages model;
   const LanguagesWidget({Key key, this.model}) : super(key: key);
@@ -10,16 +12,14 @@ class LanguagesWidget extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Text(
-            model.title ?? "Languages",
-            style: Theme.of(context).textTheme.headline4,
-          ),
+          SectionTitleText(model.title ?? "Languages"),
           ...List<Widget>.generate(
             model.data.length,
             (index) => Card(
               child: ListTile(
                 title: Text(model.data[index].title),
-                subtitle: Text("${model.data[index].strValue}"),
+                subtitle: Text(
+                    "${model.data[index].value} / ${model.data[index].maxValue}"),
               ),
             ),
           ),

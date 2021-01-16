@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:resume/models/models.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'section_title_text.dart';
+
 class LinksWidget extends StatelessWidget {
   final Links model;
 
@@ -16,10 +18,7 @@ class LinksWidget extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Text(
-            model.title ?? "Links",
-            style: Theme.of(context).textTheme.headline4,
-          ),
+          SectionTitleText(model.title ?? "Links"),
           ...List<Widget>.generate(
             model.data.length,
             (index) {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:resume/models/models.dart';
 
+import 'section_title_text.dart';
+
 class EducationWidget extends StatelessWidget {
   final Education model;
   const EducationWidget({Key key, this.model}) : super(key: key);
@@ -10,10 +12,7 @@ class EducationWidget extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Text(
-            model.title ?? "Education",
-            style: Theme.of(context).textTheme.headline4,
-          ),
+          SectionTitleText(model.title ?? "Education"),
           ...List<Widget>.generate(
             model.data.length,
             (index) => Card(
@@ -21,9 +20,13 @@ class EducationWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ListTile(
-                    title: Text(model.data[index].place),
+                    title: Text(
+                      model.data[index].place,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     subtitle: Text(
                       "${model.data[index].degree}, ${model.data[index].area}",
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
                   Padding(

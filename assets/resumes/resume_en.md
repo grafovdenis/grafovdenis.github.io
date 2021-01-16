@@ -34,7 +34,7 @@ Skills: mobile development, software development.
     ★★★☆☆ GitHub Actions
 
 ## Work experience
-### Flutter-developer at It Test
+### Flutter-developer at IT Test
 * September 2020 - Present
 * System for conducting managerial fights "DuelControl".
 

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:resume/models/models.dart';
 
+import 'section_title_text.dart';
+
 class ExperienceWidget extends StatelessWidget {
   final Experience model;
   const ExperienceWidget({Key key, this.model}) : super(key: key);
@@ -11,10 +13,7 @@ class ExperienceWidget extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Text(
-            model.title ?? "Experince",
-            style: Theme.of(context).textTheme.headline4,
-          ),
+          SectionTitleText(model.title ?? "Experince"),
           ...List<Widget>.generate(
             model.jobs.length,
             (index) => Card(
@@ -22,9 +21,13 @@ class ExperienceWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ListTile(
-                    title: Text(model.jobs[index].title),
+                    title: Text(
+                      model.jobs[index].title,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     subtitle: Text(
                       model.jobs[index].subtitle,
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
                   Padding(

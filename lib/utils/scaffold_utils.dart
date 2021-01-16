@@ -23,7 +23,18 @@ extension ScaffoldUtils on Scaffold {
                         FloatingActionButtonLocation.startTop,
                     body: Row(
                       children: <Widget>[
-                        Expanded(child: this?.body ?? Container()),
+                        Flexible(
+                          flex: 1,
+                          child: Container(),
+                        ),
+                        Flexible(
+                          flex: 1,
+                          child: this?.body ?? Container(),
+                        ),
+                        Flexible(
+                          flex: 1,
+                          child: Container(),
+                        ),
                         if (this?.endDrawer != null) ...[this.endDrawer],
                       ],
                     ),

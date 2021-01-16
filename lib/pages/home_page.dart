@@ -30,77 +30,158 @@ class HomePage extends StatelessWidget {
             if (snapshot.hasData) {
               final model = snapshot.data;
               return Scaffold(
-                drawer: SkillsWidget(
-                  model: model.skills.data,
-                  title: model.skills.title,
-                ),
-                body: NestedScrollView(
-                  headerSliverBuilder: (context, scrolled) {
-                    return <Widget>[
-                      SliverAppBar(
-                        elevation: 0,
-                        expandedHeight: 300,
-                        floating: false,
-                        pinned: true,
-                        actions: [
-                          IconButton(
-                            icon: Icon(Icons.language),
-                            onPressed: () => localeCubit.switchLocale(),
-                          ),
-                          IconButton(
-                            padding: const EdgeInsets.symmetric(horizontal: 16),
-                            icon: Icon(Icons.nights_stay),
-                            onPressed: () => themeCubit.switchTheme(),
-                          ),
-                        ],
-                        flexibleSpace: FlexibleSpaceBar(
-                          centerTitle: true,
-                          titlePadding: const EdgeInsets.all(8),
-                          title: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(model.name),
-                              Text(
-                                model.position,
-                                style: TextStyle(fontSize: 14),
-                              ),
-                            ],
-                          ),
-                          background: Padding(
-                            padding: const EdgeInsets.all(32),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(16),
-                              child: Image.asset(
-                                'assets/images/profile.jpg',
-                                fit: BoxFit.fitWidth,
-                              ),
-                            ),
-                          ),
-                        ),
-                      )
-                    ];
-                  },
-                  body: SingleChildScrollView(
-                    padding: const EdgeInsets.all(8),
+                drawer: Drawer(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
                     child: Column(
                       children: [
                         ContactInfoWidget(model: model.contactInfo),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            model.summary,
-                            style: TextStyle(fontSize: 20),
-                          ),
-                        ),
                         LinksWidget(model: model.links),
-                        LanguagesWidget(model: model.languages),
-                        ExperienceWidget(model: model.experience),
-                        EducationWidget(model: model.education),
                       ],
                     ),
                   ),
                 ),
+                body: Builder(builder: (context) {
+                  return NestedScrollView(
+                    headerSliverBuilder: (context, scrolled) {
+                      return <Widget>[
+                        SliverAppBar(
+                          elevation: 0,
+                          expandedHeight:
+                              MediaQuery.of(context).size.width / 2.5,
+                          floating: false,
+                          pinned: true,
+                          actions: [
+                            IconButton(
+                              icon: Icon(Icons.language),
+                              onPressed: () => localeCubit.switchLocale(),
+                              tooltip: "Switch language",
+                            ),
+                            IconButton(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16),
+                              icon: Icon(Icons.nights_stay),
+                              onPressed: () => themeCubit.switchTheme(),
+                              tooltip: "Switch theme",
+                            ),
+                          ],
+                          flexibleSpace: FlexibleSpaceBar(
+                            centerTitle: true,
+                            titlePadding: const EdgeInsets.all(8),
+                            title: (scrolled)
+                                ? Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Text(model.name),
+                                      Text(
+                                        model.position,
+                                        style: TextStyle(fontSize: 14),
+                                      ),
+                                    ],
+                                  )
+                                : Container(),
+                            background: Center(
+                              child: Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Flexible(
+                                      flex: 1,
+                                      child: Container(
+                                        margin: const EdgeInsets.all(16),
+                                        child: AspectRatio(
+                                          aspectRatio: 1 / 1,
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(16),
+                                            child: Image.asset(
+                                              'assets/images/profile.jpg',
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Flexible(
+                                      flex: 1,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            model.name,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .headline5
+                                                .copyWith(color: Colors.white),
+                                          ),
+                                          SizedBox(height: 8),
+                                          Text(
+                                            model.position,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .headline6
+                                                .copyWith(color: Colors.white),
+                                          ),
+                                          SizedBox(height: 8),
+                                          Row(
+                                            children: [
+                                              FaIcon(
+                                                FontAwesomeIcons.mapMarkerAlt,
+                                                color: Colors.white
+                                                    .withOpacity(0.75),
+                                              ),
+                                              SizedBox(width: 8),
+                                              Text(
+                                                model.contactInfo.location,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText1
+                                                    .copyWith(
+                                                        color: Colors.white
+                                                            .withOpacity(0.75)),
+                                              )
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                      ];
+                    },
+                    body: SingleChildScrollView(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        children: [
+                          Card(
+                            child: Padding(
+                              padding: const EdgeInsets.all(16),
+                              child: Text(
+                                model.summary,
+                                style: TextStyle(fontSize: 20),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                          SkillsWidget(model: model.skills),
+                          LanguagesWidget(model: model.languages),
+                          ExperienceWidget(model: model.experience),
+                          EducationWidget(model: model.education),
+                        ],
+                      ),
+                    ),
+                  );
+                }),
               ).asResponsive();
             } else {
               return Scaffold(
