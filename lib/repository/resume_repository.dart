@@ -133,9 +133,9 @@ class ResumeRepository {
 
     final Map<String, List<String>> _educationItems = {};
 
-    for (int i = 0; i < jobsIndexes.length - 1; i++) {
-      final itemStartIndex = jobsIndexes[i];
-      final itemEndIndex = jobsIndexes[i + 1] - 1;
+    for (int i = 0; i < educationIndexes.length - 1; i++) {
+      final itemStartIndex = educationIndexes[i];
+      final itemEndIndex = educationIndexes[i + 1] - 1;
       _educationItems.putIfAbsent(
           _education[itemStartIndex].replaceFirst("### ", ""),
           () => _education.sublist(itemStartIndex + 1, itemEndIndex));
