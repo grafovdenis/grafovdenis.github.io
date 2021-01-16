@@ -1,16 +1,17 @@
 # resume
+Flutter developer resume written with Flutter.
 
-A new Flutter project.
+## Summary
+This application has 2 supported themes (lignt and dark), 2 supported languages (russian and english) and 3 supported layots (desktop, tablet and mobile).
 
-## Getting Started
+## How it works?
+1. App takes `.md` file from assets depend on apps's locale.
+2. Parses it, builds models, builds widgets.
+3. ????
+3. PROFIT!!!!
 
-This project is a starting point for a Flutter application.
+So, if you're russian and engish speaker, you can just fork this repository, modify `assets/resumes` and get your pretty Flutter developer resume.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Deployment
+This app is deployed at GitHub Pages using GitHub Actions.
+Here is .yml file for CI/CD.
