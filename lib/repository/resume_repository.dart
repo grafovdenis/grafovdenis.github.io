@@ -77,9 +77,11 @@ class ResumeRepository {
     final languages =
         sectionList[3].map((e) => Skill.fromString(e.trim())).toList();
 
-    final skills =
-        sectionList[4].map((e) => Skill.fromString(e.trim())).toList();
-
+    final skills = sectionList[4]
+        .map((e) => Skill.fromString(e.trim()))
+        .toList()
+          ..sort(
+              (a, b) => (b.value / b.maxValue).compareTo(a.value / a.maxValue));
     final _experience = sectionList[5];
 
     final List<int> jobsIndexes = [];
