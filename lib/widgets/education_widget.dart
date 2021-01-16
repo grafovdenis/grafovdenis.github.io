@@ -61,15 +61,6 @@ class EducationWidget extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16) +
-                        const EdgeInsets.only(bottom: 8),
-                    child: Text(
-                      model.data[index].area,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(fontStyle: FontStyle.italic),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16) +
                         const EdgeInsets.only(bottom: 16),
                     child: Text(
                       model.data[index].programm,
