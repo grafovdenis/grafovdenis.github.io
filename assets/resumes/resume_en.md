@@ -46,6 +46,7 @@ Skills: mobile development, software development.
 5. WebRTC integration
 6. Gitlab CI / CD and Gitlab Runner configuration for building Android / iOS
 7. TestFlight application publishing
+8. Firebase Dynamic Links integration
 
 ### Flutter-developer at Peter the Great St. Petersburg Polytechnic University
 * April 2019 - July 2020
