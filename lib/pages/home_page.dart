@@ -35,6 +35,7 @@ class HomePage extends StatelessWidget {
                     padding: const EdgeInsets.all(16),
                     child: Column(
                       children: [
+                        SizedBox(height: AppBar().preferredSize.height),
                         ContactInfoWidget(model: model.contactInfo),
                         LinksWidget(model: model.links),
                       ],
@@ -48,8 +49,8 @@ class HomePage extends StatelessWidget {
                         SliverAppBar(
                           elevation: 0,
                           expandedHeight:
-                              (MediaQuery.of(context).size.width / 2.5 <= 250)
-                                  ? MediaQuery.of(context).size.width / 2.5
+                              (MediaQuery.of(context).size.width / 2 <= 250)
+                                  ? MediaQuery.of(context).size.width / 2
                                   : 250,
                           floating: false,
                           pinned: true,
@@ -95,86 +96,80 @@ class HomePage extends StatelessWidget {
                                     ],
                                   )
                                 : Container(),
-                            background: Center(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8) +
-                                    const EdgeInsets.only(top: 20),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Flexible(
-                                      flex: 1,
-                                      child: Container(
-                                        margin: const EdgeInsets.all(8),
-                                        child: AspectRatio(
-                                          aspectRatio: 1 / 1,
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(16),
-                                            child: Image.asset(
-                                              'assets/images/profile.jpg',
-                                              fit: BoxFit.cover,
-                                            ),
+                            background: Padding(
+                              padding: const EdgeInsets.all(16) +
+                                  const EdgeInsets.only(top: 32),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Flexible(
+                                    flex: 1,
+                                    child: Container(
+                                      margin: const EdgeInsets.all(8),
+                                      child: AspectRatio(
+                                        aspectRatio: 1 / 1,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(16),
+                                          child: Image.asset(
+                                            'assets/images/profile.jpg',
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                       ),
                                     ),
-                                    Flexible(
-                                      flex: 1,
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 8.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              model.name,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .headline5
-                                                  .copyWith(
-                                                      color: Colors.white),
-                                            ),
-                                            SizedBox(height: 8),
-                                            Text(
-                                              model.position,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .headline6
-                                                  .copyWith(
-                                                      color: Colors.white),
-                                            ),
-                                            SizedBox(height: 8),
-                                            Row(
-                                              children: [
-                                                FaIcon(
-                                                  FontAwesomeIcons.mapMarkerAlt,
-                                                  color: Colors.white
-                                                      .withOpacity(0.75),
-                                                ),
-                                                SizedBox(width: 8),
-                                                Text(
-                                                  model.contactInfo.location,
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodyText1
-                                                      .copyWith(
-                                                          color: Colors.white
-                                                              .withOpacity(
-                                                                  0.75)),
-                                                )
-                                              ],
-                                            ),
-                                          ],
-                                        ),
+                                  ),
+                                  Flexible(
+                                    flex: 2,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 8.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            model.name,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .headline5
+                                                .copyWith(color: Colors.white),
+                                          ),
+                                          SizedBox(height: 8),
+                                          Text(
+                                            model.position,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .headline6
+                                                .copyWith(color: Colors.white),
+                                          ),
+                                          SizedBox(height: 8),
+                                          Row(
+                                            children: [
+                                              FaIcon(
+                                                FontAwesomeIcons.mapMarkerAlt,
+                                                color: Colors.white
+                                                    .withOpacity(0.75),
+                                              ),
+                                              SizedBox(width: 8),
+                                              Text(
+                                                model.contactInfo.location,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText1
+                                                    .copyWith(
+                                                        color: Colors.white
+                                                            .withOpacity(0.75)),
+                                              )
+                                            ],
+                                          ),
+                                        ],
                                       ),
-                                    )
-                                  ],
-                                ),
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
                           ),
