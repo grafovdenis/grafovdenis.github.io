@@ -13,5 +13,5 @@ This application has 2 supported themes (lignt and dark), 2 supported languages 
 So, if you're russian and engish speaker, you can just fork this repository, modify `assets/resumes` and get your pretty Flutter developer resume.
 
 ## Deployment
-This app is deployed at GitHub Pages using GitHub Actions.
-Here is .yml file for CI/CD.
+This app is deployed at [GitHub Pages](https://grafovdenis.github.io/#/) using GitHub Actions.
+Here is [.yml](https://github.com/grafovdenis/grafovdenis.github.io/blob/master/.github/workflows/flutter_web.yml) file for CI/CD.
