@@ -5,7 +5,6 @@ import 'package:resume/blocs/locale/locale_cubit.dart';
 import 'package:resume/blocs/theme/theme_cubit.dart';
 import 'package:resume/models/models.dart';
 import 'package:resume/repository/resume_repository.dart';
-import 'package:resume/utils/asset_reader.dart';
 import 'package:resume/utils/scaffold_utils.dart';
 import 'package:resume/widgets/contact_info_widget.dart';
 import 'package:resume/widgets/education_widget.dart';
@@ -31,9 +30,9 @@ class HomePage extends StatelessWidget {
               final model = snapshot.data;
               return Scaffold(
                 drawer: Drawer(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: SingleChildScrollView(
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
                       child: Column(
                         children: [
                           SizedBox(height: AppBar().preferredSize.height),
