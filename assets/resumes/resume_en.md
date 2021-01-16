@@ -1,5 +1,5 @@
 # Denis Grafov
-### Flutter-developer
+### Flutter developer
 
 ## Contact info
 Saint Petersburg, Russia
