@@ -48,6 +48,16 @@ Skills: mobile development, software development.
 7. TestFlight application publishing
 8. Firebase Dynamic Links integration
 
+### Flutter developer in Emertrace (Part-time)
+* July 2020 - August 2020
+* Project to combat the spread of coronavirus in the workplace.
+
+#### Description:
+1. Creating a user interface
+2. Setting up Gitlab CI / CD and Gitlab Runner for building Android
+3. Refactoring
+4. Google Play publishing
+
 ### Flutter developer at Peter the Great St. Petersburg Polytechnic University
 * April 2019 - July 2020
 * Laboratory "Industrial systems of streaming data processing".
