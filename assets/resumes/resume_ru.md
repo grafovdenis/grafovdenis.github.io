@@ -46,7 +46,8 @@
 5. Интеграция WebRTC 
 6. Настройка Gitlab CI/CD и Gitlab Runner для сборки Android/iOS 
 7. Публикация приложения в TestFlight
-8. Интеграция Firebase Dynamic Links
+8. Интеграция Firebase Dynamic Links и Cloud Messaging
+9. Работа с неявными анимациями
 
 ### Flutter разработчик в Emertrace (Part-time)
 * Июль 2020 - Август 2020

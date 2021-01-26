@@ -46,7 +46,8 @@ Skills: mobile development, software development.
 5. WebRTC integration
 6. Gitlab CI / CD and Gitlab Runner configuration for building Android / iOS
 7. TestFlight application publishing
-8. Firebase Dynamic Links integration
+8. Firebase Dynamic Links and Cloud Messaging integration
+9. Implicit animations
 
 ### Flutter developer in Emertrace (Part-time)
 * July 2020 - August 2020
