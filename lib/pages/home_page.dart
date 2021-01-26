@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -24,7 +25,7 @@ class HomePage extends StatelessWidget {
     return BlocBuilder<LocaleCubit, LocaleState>(
       builder: (context, state) {
         return FutureBuilder<ResumeModel>(
-          future: ResumeRepository.getResume(state.locale),
+          future: compute(ResumeRepository.getResume, state.locale),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               final model = snapshot.data;
