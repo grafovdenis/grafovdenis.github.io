@@ -43,18 +43,20 @@ class HomePage extends StatelessWidget {
                                   : 250,
                           floating: false,
                           pinned: true,
-                          // leading: Builder(
-                          //   builder: (BuildContext context) {
-                          //     return IconButton(
-                          //       icon: const Icon(FontAwesomeIcons.addressCard),
-                          //       onPressed: () {
-                          //         Scaffold.of(context).openDrawer();
-                          //       },
-                          //       tooltip: MaterialLocalizations.of(context)
-                          //           .openAppDrawerTooltip,
-                          //     );
-                          //   },
-                          // ),
+                          leading: Builder(
+                            builder: (BuildContext context) {
+                              return Scaffold.of(context).hasDrawer
+                                  ? IconButton(
+                                      icon: const Icon(
+                                          FontAwesomeIcons.addressCard),
+                                      onPressed: () {
+                                        Scaffold.of(context).openDrawer();
+                                      },
+                                      tooltip: "Open contact info",
+                                    )
+                                  : Container();
+                            },
+                          ),
                           actions: [
                             IconButton(
                               icon: Icon(Icons.language),
