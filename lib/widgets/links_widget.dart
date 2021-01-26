@@ -36,7 +36,7 @@ class LinksWidget extends StatelessWidget {
               }
               return Card(
                 child: ListTile(
-                  title: Text(el.url),
+                  title: Text(el.url.split('/').last),
                   leading: FaIcon(icon),
                   onTap: () {
                     launch(el.url);

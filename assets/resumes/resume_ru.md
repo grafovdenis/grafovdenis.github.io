@@ -12,7 +12,7 @@
 
 ## Социальные сети
 * [GitHub](https://github.com/grafovdenis)
-* [LinkedIn](https://www.linkedin.com/in/denis-grafov/)
+* [LinkedIn](https://www.linkedin.com/in/denis-grafov)
 
 ## Владение языками
     ★★★★★ Русский

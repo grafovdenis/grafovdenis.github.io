@@ -12,7 +12,7 @@ Skills: mobile development, software development.
 
 ## Social networks
 * [GitHub](https://github.com/grafovdenis)
-* [LinkedIn](https://www.linkedin.com/in/denis-grafov/)
+* [LinkedIn](https://www.linkedin.com/in/denis-grafov)
 
 ## Languages
     ★★★★★ Russian
