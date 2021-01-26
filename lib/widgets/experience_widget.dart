@@ -5,6 +5,12 @@ import 'section_title_text.dart';
 
 class ExperienceWidget extends StatelessWidget {
   final Experience model;
+
+  final defaultPadding = const EdgeInsets.symmetric(
+    horizontal: 16,
+    vertical: 8,
+  );
+
   const ExperienceWidget({Key key, this.model}) : super(key: key);
 
   @override
@@ -15,36 +21,45 @@ class ExperienceWidget extends StatelessWidget {
           SectionTitleText(model.title ?? "Experince"),
           ...List<Widget>.generate(
             model.jobs.length,
-            (index) => Padding(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: Card(
+            (index) => Card(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ListTile(
-                      title: Text(
+                    Padding(
+                      padding: defaultPadding,
+                      child: Text(
                         model.jobs[index].title,
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      subtitle: Text(
-                        model.jobs[index].subtitle,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16) +
-                          const EdgeInsets.only(bottom: 8),
+                      padding: defaultPadding - const EdgeInsets.only(top: 4),
+                      child: Text(
+                        model.jobs[index].subtitle,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: defaultPadding,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Icon(
                             Icons.schedule,
-                            size: 16,
+                            size: 14,
                             color: Theme.of(context)
                                 .textTheme
-                                .bodyText1
+                                .bodyText2
                                 .color
-                                .withOpacity(0.7),
+                                .withOpacity(0.75),
                           ),
                           SizedBox(width: 8),
                           Text(
@@ -53,9 +68,9 @@ class ExperienceWidget extends StatelessWidget {
                             style: TextStyle(
                               color: Theme.of(context)
                                   .textTheme
-                                  .bodyText1
+                                  .bodyText2
                                   .color
-                                  .withOpacity(0.7),
+                                  .withOpacity(0.75),
                             ),
                           ),
                         ],
@@ -65,7 +80,11 @@ class ExperienceWidget extends StatelessWidget {
                         .map((e) => Padding(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 32, vertical: 8),
-                              child: Text(e, textAlign: TextAlign.start),
+                              child: Text(
+                                e,
+                                style: Theme.of(context).textTheme.bodyText1,
+                                textAlign: TextAlign.start,
+                              ),
                             ))
                         .toList(),
                     SizedBox(height: 8),
