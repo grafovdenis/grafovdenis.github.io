@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:resume/blocs/theme/theme_cubit.dart';
 import 'package:resume/models/models.dart';
 
 import 'section_title_text.dart';
@@ -32,7 +30,6 @@ class SkillsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeCubit = BlocProvider.of<ThemeCubit>(context);
     return Column(
       children: [
         SectionTitleText(
@@ -50,7 +47,7 @@ class SkillsWidget extends StatelessWidget {
                     (_index) => Icon(
                       Icons.star,
                       size: 14,
-                      color: ((themeCubit.state.theme == AppTheme.dark)
+                      color: ((Theme.of(context).brightness == Brightness.dark)
                               ? Theme.of(context).textTheme.bodyText1.color
                               : Theme.of(context).primaryColor)
                           .withOpacity(model.data[index].value /
