@@ -6,11 +6,11 @@ import 'package:resume/blocs/theme/theme_cubit.dart';
 import 'package:resume/models/models.dart';
 import 'package:resume/repository/resume_repository.dart';
 import 'package:resume/utils/scaffold_utils.dart';
-import 'package:resume/widgets/contact_info_widget.dart';
+import 'package:resume/widgets/background_widget.dart';
+import 'package:resume/widgets/drawer_widget.dart';
 import 'package:resume/widgets/education_widget.dart';
 import 'package:resume/widgets/experience_widget.dart';
 import 'package:resume/widgets/languages_widget.dart';
-import 'package:resume/widgets/links_widget.dart';
 import 'package:resume/widgets/skills_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -29,20 +29,7 @@ class HomePage extends StatelessWidget {
             if (snapshot.hasData) {
               final model = snapshot.data;
               return Scaffold(
-                drawer: Drawer(
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Column(
-                        children: [
-                          SizedBox(height: AppBar().preferredSize.height),
-                          ContactInfoWidget(model: model.contactInfo),
-                          LinksWidget(model: model.links),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                drawer: DrawerWidget(model: model),
                 body: Builder(builder: (context) {
                   return NestedScrollView(
                     headerSliverBuilder: (context, scrolled) {
@@ -97,82 +84,7 @@ class HomePage extends StatelessWidget {
                                     ],
                                   )
                                 : Container(),
-                            background: Padding(
-                              padding: const EdgeInsets.all(16) +
-                                  const EdgeInsets.only(top: 32),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Flexible(
-                                    flex: 1,
-                                    child: Container(
-                                      margin: const EdgeInsets.all(8),
-                                      child: AspectRatio(
-                                        aspectRatio: 1 / 1,
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(16),
-                                          child: Image.asset(
-                                            'assets/images/profile.jpg',
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Flexible(
-                                    flex: 2,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(left: 8.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            model.name,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headline5
-                                                .copyWith(color: Colors.white),
-                                          ),
-                                          SizedBox(height: 8),
-                                          Text(
-                                            model.position,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headline6
-                                                .copyWith(color: Colors.white),
-                                          ),
-                                          SizedBox(height: 8),
-                                          Row(
-                                            children: [
-                                              FaIcon(
-                                                FontAwesomeIcons.mapMarkerAlt,
-                                                color: Colors.white
-                                                    .withOpacity(0.75),
-                                              ),
-                                              SizedBox(width: 8),
-                                              Text(
-                                                model.contactInfo.location,
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyText1
-                                                    .copyWith(
-                                                        color: Colors.white
-                                                            .withOpacity(0.75)),
-                                              )
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
+                            background: BackgroundWidget(model: model),
                           ),
                         )
                       ];
