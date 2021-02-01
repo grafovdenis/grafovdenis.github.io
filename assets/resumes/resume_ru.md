@@ -40,12 +40,12 @@
 
 #### Описание:
 1. Создание пользовательского интерфейса 
-2. Общение с Rest API, общение по WebSocket 
+2. Общение с Rest API, общение по WebSocket с использованием protobuf
 3. Построение архитектуры 
 4. Интеграция Яндекс Кассы 
 5. Интеграция WebRTC 
 6. Настройка Gitlab CI/CD и Gitlab Runner для сборки Android/iOS 
-7. Публикация приложения в TestFlight
+7. Публикация приложения в TestFlight с использованием fastlane
 8. Интеграция Firebase Dynamic Links и Cloud Messaging
 9. Работа с неявными анимациями
 

@@ -40,12 +40,12 @@ Skills: mobile development, software development.
 
 #### Description:
 1. Creating a user interface
-2. Communication with Rest API, communication via WebSocket
+2. Communication with Rest API, communication via WebSocket using protobuf
 3. Building architecture
 4. Yandex Checkout integration
 5. WebRTC integration
 6. Gitlab CI / CD and Gitlab Runner configuration for building Android / iOS
-7. TestFlight application publishing
+7. TestFlight application publishing using fastlane
 8. Firebase Dynamic Links and Cloud Messaging integration
 9. Implicit animations
 
